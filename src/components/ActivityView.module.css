@@ -31,10 +31,17 @@
   text-align: center;
 }
 
-.view p {
-  font-size: 1.1rem;
-  color: var(--text);
-  opacity: 0.8;
-  text-align: center;
-  line-height: 1.6;
+.toolsContainer {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+/* Media query for stacking on smaller screens */
+@media (max-width: 768px) {
+  .toolsContainer {
+    grid-template-columns: 1fr;
+  }
 }
