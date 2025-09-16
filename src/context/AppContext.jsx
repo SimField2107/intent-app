@@ -4,11 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [activities, setActivities] = useLocalStorage('activities', [
-    { id: 1, text: 'Go for a 10-minute walk', completed: true },
-    { id: 2, text: 'Read one chapter of a book', completed: false },
-    { id: 3, text: "Plan tomorrow's top 3 priorities", completed: false },
-  ]);
+  const [activities, setActivities] = useLocalStorage('activities', []);
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
   const [selectedActivityId, setSelectedActivityId] = useState(null);
