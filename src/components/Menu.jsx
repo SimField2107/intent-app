@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import ActivityCard from './ActivityCard';
+import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './Menu.module.css';
 
 const Menu = () => {
-  const [activities, setActivities] = useState([
-    { id: 1, text: '10-Minute Walk', completed: false },
-    { id: 2, text: 'Deep Work on Project X', completed: false },
-    { id: 3, text: 'Read for 30 minutes', completed: false }
-  ]);
+  const [activities, setActivities] = useLocalStorage('activities', []);
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e) => {
