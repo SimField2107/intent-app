@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
+import Timer from '../components/Timer';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -12,7 +13,7 @@ const DashboardPage = () => {
           <Menu />
         </div>
         <div className={styles.centerColumn}>
-          <h2>Timer</h2>
+          <Timer />
         </div>
         <div className={styles.rightColumn}>
           <h2>Notes</h2>
