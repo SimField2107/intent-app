@@ -1,11 +1,18 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './ActivityCard.module.css';
 
 const ActivityCard = ({ activity, onDelete, onToggleComplete, onSelectActivity, selectedActivityId }) => {
   const isSelected = selectedActivityId === activity.id;
   
   return (
-    <li className={`${styles.listItem} ${activity.completed ? styles.completed : ''} ${isSelected ? styles.active : ''}`}>
+    <motion.li 
+      className={`${styles.listItem} ${activity.completed ? styles.completed : ''} ${isSelected ? styles.active : ''}`}
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+    >
       <div className={styles.activityContent}>
         <input
           type="checkbox"
@@ -29,7 +36,7 @@ const ActivityCard = ({ activity, onDelete, onToggleComplete, onSelectActivity, 
           Delete
         </button>
       </div>
-    </li>
+    </motion.li>
   );
 };
 

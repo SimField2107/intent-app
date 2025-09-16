@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ActivityCard from './ActivityCard';
 import AppContext from '../context/AppContext';
 import styles from './Menu.module.css';
@@ -74,18 +75,20 @@ const Menu = () => {
           }
           
           return (
-            <ul className={styles.list}>
-              {filteredActivities.map((activity) => (
-            <ActivityCard 
-              key={activity.id} 
-              activity={activity} 
-              onDelete={handleDeleteActivity}
-              onToggleComplete={handleToggleComplete}
-              onSelectActivity={handleSelectActivity}
-              selectedActivityId={selectedActivityId}
-            />
-              ))}
-            </ul>
+            <motion.ul className={styles.list}>
+              <AnimatePresence>
+                {filteredActivities.map((activity) => (
+              <ActivityCard 
+                key={activity.id} 
+                activity={activity} 
+                onDelete={handleDeleteActivity}
+                onToggleComplete={handleToggleComplete}
+                onSelectActivity={handleSelectActivity}
+                selectedActivityId={selectedActivityId}
+              />
+                ))}
+              </AnimatePresence>
+            </motion.ul>
           );
         })()
       )}
