@@ -6,46 +6,49 @@ const DopamineCard = ({ card }) => {
   const { setActiveCard, updateCardImage } = useContext(AppContext);
   const fileInputRef = useRef(null);
 
-  const handleEditClick = (e) => {
-    e.stopPropagation(); // Prevent card click when clicking edit button
+  const handleEditClick = (event) => {
+    event.stopPropagation(); // Stops click from navigating
     fileInputRef.current.click();
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        updateCardImage(card.id, reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      updateCardImage(card.id, reader.result);
+    };
   };
 
-  const cardStyle = card.imgSrc ? {
-    backgroundImage: `url(${card.imgSrc})`
-  } : {};
+  const cardStyle = {
+    backgroundImage: card.imgSrc ? `url(${card.imgSrc})` : 'none',
+  };
 
   return (
-    <div 
+    <div
       className={`${styles.card} ${card.imgSrc ? styles.hasImage : ''}`}
-      style={cardStyle}
       onClick={() => setActiveCard(card)}
+      style={cardStyle}
+      role="button"
+      tabIndex="0"
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setActiveCard(card)}
     >
       <h3 className={styles.title}>{card.title}</h3>
-      <button 
+      <button
         className={styles.editButton}
         onClick={handleEditClick}
         title="Edit image"
       >
         ✏️
       </button>
-      <input 
-        type="file" 
-        accept="image/*" 
-        ref={fileInputRef} 
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
         onChange={handleFileChange}
-        style={{ display: 'none' }} 
       />
     </div>
   );
