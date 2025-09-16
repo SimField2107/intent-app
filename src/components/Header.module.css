@@ -35,3 +35,47 @@
   background-color: var(--secondary);
   border-color: var(--primary);
 }
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .controls {
+    gap: 0.75rem;
+  }
+  
+  .controls button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .controls {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .controls button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: auto;
+  }
+}
