@@ -1,6 +1,8 @@
 .card {
   position: relative;
   background-color: var(--primary);
+  background-size: cover;
+  background-position: center;
   border: 1px solid var(--border-color);
   border-radius: 16px;
   aspect-ratio: 1 / 1;
@@ -55,4 +57,25 @@
 .editButton:hover {
   background: rgba(255, 255, 255, 1);
   transform: scale(1.1);
+}
+
+.hasImage {
+  position: relative;
+  z-index: 1;
+}
+
+.hasImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.hasImage > * {
+  z-index: 3; /* Ensure content is on top of the overlay */
 }

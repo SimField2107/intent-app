@@ -76,6 +76,14 @@ export const AppProvider = ({ children }) => {
     setSelectedActivityId(id);
   };
 
+  const updateCardImage = (cardId, newImgSrc) => {
+    setCards(currentCards =>
+      currentCards.map(card =>
+        card.id === cardId ? { ...card, imgSrc: newImgSrc } : card
+      )
+    );
+  };
+
   const startTimer = () => {
     setIsActive(true);
   };
@@ -147,6 +155,7 @@ export const AppProvider = ({ children }) => {
     setIsActive,
     cards,
     setCards,
+    updateCardImage,
     activeCard,
     setActiveCard,
     handleSubmit,
