@@ -29,11 +29,16 @@
 @media (max-width: 768px) {
   .mainContent {
     padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .modalContent {
     padding: 1.5rem;
     margin: 1rem;
+    max-width: calc(100vw - 2rem);
   }
   
   .modalButtons {
