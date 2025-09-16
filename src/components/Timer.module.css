@@ -6,6 +6,39 @@
   padding: 2rem;
 }
 
+.modeButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modeButton {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--card-background-dark);
+  border-radius: 6px;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modeButton:hover {
+  border-color: var(--primary-accent);
+  background-color: var(--card-background-dark);
+}
+
+.modeButton.activeMode {
+  background-color: var(--primary-accent);
+  color: white;
+  border-color: var(--primary-accent);
+}
+
+.modeButton.activeMode:hover {
+  background-color: #0099e6;
+}
+
 .timeDisplay {
   font-size: 4rem;
   font-weight: 700;
