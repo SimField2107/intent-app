@@ -5,6 +5,12 @@
   padding: 2rem;
 }
 
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+}
+
 .mainContent {
   display: flex;
   justify-content: center;
