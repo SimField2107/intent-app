@@ -8,6 +8,8 @@ export const AppProvider = ({ children }) => {
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
   const [selectedActivityId, setSelectedActivityId] = useState(null);
+  const [sessionCount, setSessionCount] = useState(0);
+  const [timerMode, setTimerMode] = useState('pomodoro');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +40,22 @@ export const AppProvider = ({ children }) => {
     setSelectedActivityId(id);
   };
 
+  const handleTimerComplete = () => {
+    if (timerMode === 'pomodoro') {
+      const newCount = sessionCount + 1;
+      setSessionCount(newCount);
+      
+      // Every 4th session, take a long break, otherwise short break
+      if (newCount % 4 === 0) {
+        setTimerMode('longBreak');
+      } else {
+        setTimerMode('shortBreak');
+      }
+    } else if (timerMode === 'shortBreak' || timerMode === 'longBreak') {
+      setTimerMode('pomodoro');
+    }
+  };
+
   const value = {
     activities,
     setActivities,
@@ -47,10 +65,15 @@ export const AppProvider = ({ children }) => {
     setFilter,
     selectedActivityId,
     setSelectedActivityId,
+    sessionCount,
+    setSessionCount,
+    timerMode,
+    setTimerMode,
     handleSubmit,
     handleDeleteActivity,
     handleToggleComplete,
-    handleSelectActivity
+    handleSelectActivity,
+    handleTimerComplete
   };
 
   return (

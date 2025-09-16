@@ -138,3 +138,12 @@
   transform: none;
   background-color: inherit;
 }
+
+.sessionCount {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 1rem 0 0 0;
+  text-align: center;
+  opacity: 0.8;
+}

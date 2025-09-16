@@ -8,10 +8,17 @@ const SHORT_BREAK = 300; // 5 minutes
 const LONG_BREAK = 900; // 15 minutes
 
 const Timer = () => {
-  const { activities, selectedActivityId } = useContext(AppContext);
+  const { 
+    activities, 
+    selectedActivityId, 
+    sessionCount, 
+    setSessionCount, 
+    timerMode, 
+    setTimerMode, 
+    handleTimerComplete 
+  } = useContext(AppContext);
   const [timeLeft, setTimeLeft] = useState(POMODORO);
   const [isActive, setIsActive] = useState(false);
-  const [mode, setMode] = useState('pomodoro');
   const audioRef = useRef(null);
 
   // Find the selected activity
@@ -20,7 +27,7 @@ const Timer = () => {
   // Reset timer when mode changes
   useEffect(() => {
     setIsActive(false);
-    switch (mode) {
+    switch (timerMode) {
       case 'pomodoro':
         setTimeLeft(POMODORO);
         break;
@@ -33,7 +40,7 @@ const Timer = () => {
       default:
         setTimeLeft(POMODORO);
     }
-  }, [mode]);
+  }, [timerMode]);
 
   // Timer effect
   useEffect(() => {
@@ -44,7 +51,7 @@ const Timer = () => {
         setTimeLeft(timeLeft => timeLeft - 1);
       }, 1000);
     } else if (timeLeft === 0) {
-      setIsActive(false);
+      handleTimerComplete();
       audioRef.current.play();
     }
     
@@ -91,23 +98,13 @@ const Timer = () => {
 
   const handleReset = () => {
     setIsActive(false);
-    switch (mode) {
-      case 'pomodoro':
-        setTimeLeft(POMODORO);
-        break;
-      case 'shortBreak':
-        setTimeLeft(SHORT_BREAK);
-        break;
-      case 'longBreak':
-        setTimeLeft(LONG_BREAK);
-        break;
-      default:
-        setTimeLeft(POMODORO);
-    }
+    setSessionCount(0);
+    setTimerMode('pomodoro');
+    setTimeLeft(POMODORO);
   };
 
   const getModeDuration = () => {
-    switch (mode) {
+    switch (timerMode) {
       case 'pomodoro':
         return POMODORO;
       case 'shortBreak':
@@ -130,20 +127,20 @@ const Timer = () => {
       )}
       <div className={styles.modeButtons}>
         <button 
-          className={`${styles.modeButton} ${mode === 'pomodoro' ? styles.activeMode : ''}`}
-          onClick={() => setMode('pomodoro')}
+          className={`${styles.modeButton} ${timerMode === 'pomodoro' ? styles.activeMode : ''}`}
+          onClick={() => setTimerMode('pomodoro')}
         >
           Pomodoro
         </button>
         <button 
-          className={`${styles.modeButton} ${mode === 'shortBreak' ? styles.activeMode : ''}`}
-          onClick={() => setMode('shortBreak')}
+          className={`${styles.modeButton} ${timerMode === 'shortBreak' ? styles.activeMode : ''}`}
+          onClick={() => setTimerMode('shortBreak')}
         >
           Short Break
         </button>
         <button 
-          className={`${styles.modeButton} ${mode === 'longBreak' ? styles.activeMode : ''}`}
-          onClick={() => setMode('longBreak')}
+          className={`${styles.modeButton} ${timerMode === 'longBreak' ? styles.activeMode : ''}`}
+          onClick={() => setTimerMode('longBreak')}
         >
           Long Break
         </button>
@@ -171,6 +168,7 @@ const Timer = () => {
           Reset
         </button>
       </div>
+      <p className={styles.sessionCount}>Sessions Completed: {sessionCount}</p>
     </div>
   );
 };
