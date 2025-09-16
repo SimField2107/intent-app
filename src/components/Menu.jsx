@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ActivityCard from './ActivityCard';
+import AppContext from '../context/AppContext';
 import styles from './Menu.module.css';
 
-const Menu = ({ 
-  activities, 
-  inputValue, 
-  setInputValue, 
-  filter, 
-  setFilter, 
-  onAddActivity, 
-  onDeleteActivity, 
-  onToggleComplete, 
-  onSelectActivity, 
-  selectedActivityId 
-}) => {
+const Menu = () => {
+  const {
+    activities,
+    inputValue,
+    setInputValue,
+    filter,
+    setFilter,
+    handleSubmit,
+    handleDeleteActivity,
+    handleToggleComplete,
+    handleSelectActivity,
+    selectedActivityId
+  } = useContext(AppContext);
 
   return (
     <div className={styles.menu}>
-      <form className={styles.form} onSubmit={onAddActivity}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input 
           type="text" 
           placeholder="Add a new activity..." 
@@ -77,9 +79,9 @@ const Menu = ({
             <ActivityCard 
               key={activity.id} 
               activity={activity} 
-              onDelete={onDeleteActivity}
-              onToggleComplete={onToggleComplete}
-              onSelectActivity={onSelectActivity}
+              onDelete={handleDeleteActivity}
+              onToggleComplete={handleToggleComplete}
+              onSelectActivity={handleSelectActivity}
               selectedActivityId={selectedActivityId}
             />
               ))}

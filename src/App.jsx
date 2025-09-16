@@ -1,8 +1,11 @@
 import DashboardPage from './pages/DashboardPage';
+import { AppProvider } from './context/AppContext';
 
 function App() {
   return (
-    <DashboardPage />
+    <AppProvider>
+      <DashboardPage />
+    </AppProvider>
   );
 }
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import AppContext from '../context/AppContext';
 import styles from './Timer.module.css';
 
 // Timer mode durations in seconds
@@ -6,7 +7,8 @@ const POMODORO = 1500; // 25 minutes
 const SHORT_BREAK = 300; // 5 minutes
 const LONG_BREAK = 900; // 15 minutes
 
-const Timer = ({ activities, selectedActivityId }) => {
+const Timer = () => {
+  const { activities, selectedActivityId } = useContext(AppContext);
   const [timeLeft, setTimeLeft] = useState(POMODORO);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState('pomodoro');
