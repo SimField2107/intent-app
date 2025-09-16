@@ -1,57 +1,37 @@
 .header {
-  background-color: var(--background);
-  padding: 1rem 2rem;
-  border-bottom: 1px solid var(--card-background);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .title {
-  color: var(--text);
   font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
+  font-weight: 700;
+  color: var(--text);
 }
 
-.buttonGroup {
+.controls {
   display: flex;
-  gap: 0.75rem;
-  align-items: center;
+  gap: 1rem;
 }
 
-.themeButton {
+.controls button {
   padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   background-color: var(--card-background);
   color: var(--text);
-  border: 1px solid var(--card-background);
-  border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
-.themeButton:hover {
-  background-color: var(--primary-accent);
-  color: white;
-  border-color: var(--primary-accent);
-}
-
-.settingsButton {
-  padding: 0.5rem 1rem;
-  background-color: var(--card-background);
-  color: var(--text);
-  border: 1px solid var(--card-background);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.settingsButton:hover {
-  background-color: var(--primary-accent);
-  color: white;
-  border-color: var(--primary-accent);
+.controls button:hover {
+  background-color: var(--secondary);
+  border-color: var(--primary);
 }

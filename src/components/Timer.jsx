@@ -178,7 +178,6 @@ const Timer = () => {
           Reset
         </button>
       </div>
-      <p className={styles.sessionCount}>Sessions Completed: {sessionCount}</p>
     </div>
   );
 };

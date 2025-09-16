@@ -13,10 +13,17 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.title {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+}
+
+.title {
   font-size: 1.25rem;
   color: var(--text);
+  margin: 0;
 }
 
 .content {

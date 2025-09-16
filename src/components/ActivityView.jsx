@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import Menu from './Menu';
 import Timer from './Timer';
+import Card from './Card';
 import styles from './ActivityView.module.css';
 
 const ActivityView = () => {
-  const { activeCard, setActiveCard } = useContext(AppContext);
+  const { activeCard, setActiveCard, sessionCount } = useContext(AppContext);
 
   if (!activeCard) return null;
 
@@ -16,8 +17,15 @@ const ActivityView = () => {
       </button>
       <h1 className={styles.title}>{activeCard.title}</h1>
       <div className={styles.toolsContainer}>
-        <Menu />
-        <Timer />
+        <Card title="Activities">
+          <Menu />
+        </Card>
+        <Card
+          title="Focus Timer"
+          headerAccessory={<p>Sessions: {sessionCount}</p>}
+        >
+          <Timer />
+        </Card>
       </div>
     </div>
   );
