@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Menu from '../components/Menu';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -8,7 +9,7 @@ const DashboardPage = () => {
       <Header />
       <main className={styles.main}>
         <div className={styles.leftColumn}>
-          <h2>Menu</h2>
+          <Menu />
         </div>
         <div className={styles.centerColumn}>
           <h2>Timer</h2>
