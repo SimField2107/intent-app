@@ -1,0 +1,29 @@
+:root {
+  --background-light: #F8F5F2;
+  --background-dark: #1A1D22;
+  --text-light: #333333;
+  --text-dark: #E0E0E0;
+  --primary-accent: #00A8FF; /* Vibrant Blue for now */
+  --card-background-dark: #2A2F37;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
