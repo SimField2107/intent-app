@@ -1,12 +1,43 @@
-# React + Vite
+# Intent - A Dopamine Menu & Productivity App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist, all-in-one productivity dashboard designed to help you manage tasks, track time, and stay focused with intention.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dopamine Board**: A visual, customizable grid of activities to choose from based on your current mood or needs.
+- **Activity View**: A focused workspace with an integrated to-do list and Pomodoro timer.
+- **Persistent State**: Your activities, notes, and custom settings are all saved locally in your browser.
+- **Pomodoro Timer**: A full-featured timer with customizable durations for focus, short breaks, and long breaks. Includes session tracking and browser notifications.
+- **Themeable UI**: A clean, modern interface with both Light and Dark modes.
+- **Responsive Design**: Fully usable on desktop, tablet, and mobile devices.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React (with Hooks & Context API)
+- **Build Tool**: Vite
+- **Styling**: CSS Modules
+- **Animation**: Framer Motion
+
+## Getting Started
+
+To run this project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone <your-repository-url>
+   ```
+
+2. Navigate into the project directory:
+   ```bash
+   cd intent-app
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
