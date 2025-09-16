@@ -1,24 +1,26 @@
 :root {
-  /* Light theme (default) */
-  --background: #F8F5F2;
-  --text: #333333;
+  /* Base variables for Light Mode */
+  --background: #FDF7FF; /* Very light lavender */
+  --text: #4A4558; /* Muted dark purple */
+  --primary: #A7C7E7; /* Soft pastel blue */
+  --secondary: #FFC3D6; /* Soft pastel pink */
+  --accent: #D6C2E7; /* Pastel lavender */
   --card-background: #FFFFFF;
-  --primary-accent: #00A8FF; /* Vibrant Blue for now */
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --border-color: #EAE4F1;
 }
 
 [data-theme='dark'] {
-  /* Dark theme */
-  --background: #1A1D22;
-  --text: #E0E0E0;
-  --card-background: #2A2F37;
+  /* Overrides for Dark Mode */
+  --background: #2C2A3A; /* Deep, dark purple */
+  --text: #EAE4F1; /* Light lavender-grey */
+  --primary: #A7C7E7; /* Pastel blue (pops on dark) */
+  --secondary: #E5A9BC; /* Muted pink */
+  --accent: #BEA8D3; /* Brighter lavender */
+  --card-background: #3B384D;
+  --border-color: #5A556A;
 }
+
+/* --- Global Styles --- */
 
 body {
   margin: 0;
@@ -28,6 +30,14 @@ body {
   min-height: 100vh;
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {

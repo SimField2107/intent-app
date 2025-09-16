@@ -4,6 +4,7 @@ import Menu from '../components/Menu';
 import Timer from '../components/Timer';
 import NotePad from '../components/NotePad';
 import SettingsModal from '../components/SettingsModal';
+import Card from '../components/Card';
 import AppContext from '../context/AppContext';
 import styles from './DashboardPage.module.css';
 
@@ -11,25 +12,25 @@ const DashboardPage = () => {
   const { isSettingsOpen, activityToDelete, setActivityToDelete, confirmDeleteActivity } = useContext(AppContext);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.dashboard}>
       <Header />
-      <main className={styles.main}>
-        <div className={styles.leftColumn}>
+      <main className={styles.mainContent}>
+        <Card title="Activity Menu">
           <Menu />
-        </div>
-        <div className={styles.centerColumn}>
+        </Card>
+        <Card title="Focus Timer">
           <Timer />
-        </div>
-        <div className={styles.rightColumn}>
+        </Card>
+        <Card title="Scratchpad">
           <NotePad />
-        </div>
+        </Card>
       </main>
       {isSettingsOpen && <SettingsModal />}
       {activityToDelete && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <h3>Confirm Delete</h3>
-            <p>Are you sure you want to delete this activity?</p>
+            <h3>Are you sure?</h3>
+            <p>Do you really want to delete this activity?</p>
             <div className={styles.modalButtons}>
               <button 
                 className={styles.cancelButton}

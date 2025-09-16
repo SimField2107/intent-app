@@ -42,14 +42,13 @@ const SettingsModal = () => {
         </div>
         
         <form className={styles.form} onSubmit={handleSave}>
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="pomodoro">
+          <div className={styles.field}>
+            <label htmlFor="pomodoro">
               Pomodoro (minutes)
             </label>
             <input
               type="number"
               id="pomodoro"
-              className={styles.input}
               value={pomodoroDuration}
               onChange={(e) => setPomodoroDuration(e.target.value)}
               min="1"
@@ -57,14 +56,13 @@ const SettingsModal = () => {
             />
           </div>
           
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="shortBreak">
+          <div className={styles.field}>
+            <label htmlFor="shortBreak">
               Short Break (minutes)
             </label>
             <input
               type="number"
               id="shortBreak"
-              className={styles.input}
               value={shortBreakDuration}
               onChange={(e) => setShortBreakDuration(e.target.value)}
               min="1"
@@ -72,14 +70,13 @@ const SettingsModal = () => {
             />
           </div>
           
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="longBreak">
+          <div className={styles.field}>
+            <label htmlFor="longBreak">
               Long Break (minutes)
             </label>
             <input
               type="number"
               id="longBreak"
-              className={styles.input}
               value={longBreakDuration}
               onChange={(e) => setLongBreakDuration(e.target.value)}
               min="1"
@@ -87,7 +84,7 @@ const SettingsModal = () => {
             />
           </div>
           
-          <div className={styles.buttons}>
+          <div className={styles.actions}>
             <button type="button" className={styles.cancelButton} onClick={handleClose}>
               Cancel
             </button>

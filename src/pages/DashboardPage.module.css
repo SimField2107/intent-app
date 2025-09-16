@@ -1,35 +1,15 @@
-.container {
-  min-height: 100vh;
-  background-color: var(--background-dark);
-  color: var(--text-dark);
-}
-
-.main {
-  display: flex;
-  gap: 1rem;
+.dashboard {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 2rem;
-  flex: 1;
 }
 
-.leftColumn {
-  flex: 0 0 40%;
-  padding: 1rem;
-  background-color: var(--card-background-dark);
-  border-radius: 8px;
-}
-
-.centerColumn {
-  flex: 0 0 25%;
-  padding: 1rem;
-  background-color: var(--card-background-dark);
-  border-radius: 8px;
-}
-
-.rightColumn {
-  flex: 1;
-  padding: 1rem;
-  background-color: var(--card-background-dark);
-  border-radius: 8px;
+.mainContent {
+  display: grid;
+  grid-template-columns: 40% 25% 35%;
+  gap: 2rem;
+  align-items: start;
 }
 
 /* Confirmation Modal Styles */
