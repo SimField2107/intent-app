@@ -63,3 +63,8 @@
   border-radius: inherit;
   z-index: 2;
 }
+
+.hasImage .title {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}

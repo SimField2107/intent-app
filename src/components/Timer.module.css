@@ -1,79 +1,34 @@
 .timer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.selectedActivity {
-  background-color: var(--card-background-dark);
-  border: 1px solid var(--primary-accent);
-  border-radius: 8px;
-  padding: 1rem;
   text-align: center;
-  max-width: 100%;
-  margin-bottom: 1rem;
-}
-
-.activityTitle {
-  color: var(--primary-accent);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.activityText {
-  color: var(--text-dark);
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  word-wrap: break-word;
 }
 
 .modeButtons {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.modeButton {
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--card-background-dark);
-  border-radius: 6px;
-  background-color: var(--background-dark);
-  color: var(--text-dark);
-  font-size: 0.9rem;
-  font-weight: 500;
+.modeButtons button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  color: var(--text);
+  opacity: 0.6;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 6px;
 }
 
-.modeButton:hover {
-  border-color: var(--primary-accent);
-  background-color: var(--card-background-dark);
-}
-
-.modeButton.activeMode {
-  background-color: var(--primary-accent);
-  color: white;
-  border-color: var(--primary-accent);
-}
-
-.modeButton.activeMode:hover {
-  background-color: #0099e6;
+.modeButtons button.active {
+  font-weight: 600;
+  opacity: 1;
+  background-color: var(--secondary);
 }
 
 .timeDisplay {
   font-size: 4rem;
-  font-weight: 700;
-  color: var(--primary-accent);
-  text-align: center;
-  font-family: 'Courier New', monospace;
-  letter-spacing: 0.1em;
-  margin: 0;
+  font-weight: 600;
+  margin: 1rem 0;
 }
 
 .controls {
@@ -83,67 +38,31 @@
   margin-top: 1.5rem;
 }
 
-.button {
-  padding: 0.75rem 1.5rem;
-  border: none;
+.controls button {
+  padding: 10px 24px;
   border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-background);
+  color: var(--text);
   font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 80px;
-}
-
-.startButton {
-  background-color: var(--primary-accent);
-  color: white;
-}
-
-.startButton:hover {
-  background-color: #0099e6;
-  transform: translateY(-1px);
-}
-
-.pauseButton {
-  background-color: #ffc107;
-  color: #212529;
-}
-
-.pauseButton:hover {
-  background-color: #e0a800;
-  transform: translateY(-1px);
-}
-
-.resetButton {
-  background-color: #6c757d;
-  color: white;
-}
-
-.resetButton:hover {
-  background-color: #5a6268;
-  transform: translateY(-1px);
-}
-
-.button:active {
-  transform: translateY(0);
-}
-
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.button:disabled:hover {
-  transform: none;
-  background-color: inherit;
-}
-
-.sessionCount {
-  color: var(--text-dark);
-  font-size: 0.9rem;
   font-weight: 500;
-  margin: 1rem 0 0 0;
-  text-align: center;
+  cursor: pointer;
+}
+
+.controls button:first-child {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme='light'] .controls button:first-child {
+  color: #FFFFFF; /* White text on blue bg for better contrast */
+}
+
+[data-theme='dark'] .controls button:first-child {
+  color: #FFFFFF; /* White text on dark blue bg */
+}
+
+.focusTask {
+  margin-bottom: 1rem;
   opacity: 0.8;
 }

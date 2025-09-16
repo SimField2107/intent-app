@@ -51,7 +51,7 @@
 
 .focusButton {
   padding: 0.25rem 0.5rem;
-  background-color: var(--primary-accent);
+  background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 3px;
@@ -62,7 +62,8 @@
 }
 
 .focusButton:hover {
-  background-color: #0099e6;
+  background-color: var(--primary);
+  opacity: 0.8;
 }
 
 .deleteButton {
