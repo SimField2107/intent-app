@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
+import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
   return (
-    <div>
-      <h1>Dashboard Page</h1>
+    <div className={styles.container}>
+      <Header />
     </div>
   );
 };

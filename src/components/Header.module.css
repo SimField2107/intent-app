@@ -1,0 +1,12 @@
+.header {
+  background-color: var(--background-dark);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--card-background-dark);
+}
+
+.title {
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
