@@ -2,11 +2,6 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import AppContext from '../context/AppContext';
 import styles from './Timer.module.css';
 
-// Timer mode durations in seconds
-const POMODORO = 1500; // 25 minutes
-const SHORT_BREAK = 300; // 5 minutes
-const LONG_BREAK = 900; // 15 minutes
-
 const Timer = () => {
   const { 
     activities, 
@@ -15,9 +10,16 @@ const Timer = () => {
     setSessionCount, 
     timerMode, 
     setTimerMode, 
-    handleTimerComplete 
+    handleTimerComplete,
+    settings
   } = useContext(AppContext);
-  const [timeLeft, setTimeLeft] = useState(POMODORO);
+  
+  // Calculate durations from settings (convert minutes to seconds)
+  const pomodoroDuration = settings.pomodoro * 60;
+  const shortBreakDuration = settings.shortBreak * 60;
+  const longBreakDuration = settings.longBreak * 60;
+  
+  const [timeLeft, setTimeLeft] = useState(() => settings.pomodoro * 60);
   const [isActive, setIsActive] = useState(false);
   const audioRef = useRef(null);
 
@@ -29,18 +31,18 @@ const Timer = () => {
     setIsActive(false);
     switch (timerMode) {
       case 'pomodoro':
-        setTimeLeft(POMODORO);
+        setTimeLeft(pomodoroDuration);
         break;
       case 'shortBreak':
-        setTimeLeft(SHORT_BREAK);
+        setTimeLeft(shortBreakDuration);
         break;
       case 'longBreak':
-        setTimeLeft(LONG_BREAK);
+        setTimeLeft(longBreakDuration);
         break;
       default:
-        setTimeLeft(POMODORO);
+        setTimeLeft(pomodoroDuration);
     }
-  }, [timerMode]);
+  }, [timerMode, pomodoroDuration, shortBreakDuration, longBreakDuration]);
 
   // Timer effect
   useEffect(() => {
@@ -100,19 +102,19 @@ const Timer = () => {
     setIsActive(false);
     setSessionCount(0);
     setTimerMode('pomodoro');
-    setTimeLeft(POMODORO);
+    setTimeLeft(pomodoroDuration);
   };
 
   const getModeDuration = () => {
     switch (timerMode) {
       case 'pomodoro':
-        return POMODORO;
+        return pomodoroDuration;
       case 'shortBreak':
-        return SHORT_BREAK;
+        return shortBreakDuration;
       case 'longBreak':
-        return LONG_BREAK;
+        return longBreakDuration;
       default:
-        return POMODORO;
+        return pomodoroDuration;
     }
   };
 

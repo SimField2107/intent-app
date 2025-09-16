@@ -11,6 +11,11 @@ export const AppProvider = ({ children }) => {
   const [sessionCount, setSessionCount] = useState(0);
   const [timerMode, setTimerMode] = useState('pomodoro');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [settings, setSettings] = useLocalStorage('timerSettings', { 
+    pomodoro: 25, 
+    shortBreak: 5, 
+    longBreak: 15 
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,6 +77,8 @@ export const AppProvider = ({ children }) => {
     setTimerMode,
     isSettingsOpen,
     setIsSettingsOpen,
+    settings,
+    setSettings,
     handleSubmit,
     handleDeleteActivity,
     handleToggleComplete,

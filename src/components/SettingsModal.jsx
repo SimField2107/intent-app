@@ -1,12 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import styles from './SettingsModal.module.css';
 
 const SettingsModal = () => {
-  const { isSettingsOpen, setIsSettingsOpen } = useContext(AppContext);
-  const [pomodoroDuration, setPomodoroDuration] = useState(25);
-  const [shortBreakDuration, setShortBreakDuration] = useState(5);
-  const [longBreakDuration, setLongBreakDuration] = useState(15);
+  const { isSettingsOpen, setIsSettingsOpen, settings, setSettings } = useContext(AppContext);
+  const [pomodoroDuration, setPomodoroDuration] = useState(settings.pomodoro);
+  const [shortBreakDuration, setShortBreakDuration] = useState(settings.shortBreak);
+  const [longBreakDuration, setLongBreakDuration] = useState(settings.longBreak);
+
+  // Update local state when settings change
+  useEffect(() => {
+    setPomodoroDuration(settings.pomodoro);
+    setShortBreakDuration(settings.shortBreak);
+    setLongBreakDuration(settings.longBreak);
+  }, [settings]);
 
   const handleClose = () => {
     setIsSettingsOpen(false);
@@ -14,8 +21,7 @@ const SettingsModal = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    // TODO: Implement saving timer durations
-    console.log('Saving settings:', {
+    setSettings({
       pomodoro: pomodoroDuration,
       shortBreak: shortBreakDuration,
       longBreak: longBreakDuration
