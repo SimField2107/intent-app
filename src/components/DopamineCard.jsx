@@ -1,14 +1,14 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import styles from './DopamineCard.module.css';
 
 const DopamineCard = ({ card }) => {
   const { setActiveCard, updateCardImage } = useContext(AppContext);
-  const fileInputRef = useRef(null);
+  const inputId = `file-input-${card.id}`; // Create a unique ID for the input
 
-  const handleEditClick = (event) => {
-    event.stopPropagation(); // Stops click from navigating
-    fileInputRef.current.click();
+  // We only need to stop propagation on the label's click
+  const handleLabelClick = (event) => {
+    event.stopPropagation();
   };
 
   const handleFileChange = (event) => {
@@ -20,6 +20,7 @@ const DopamineCard = ({ card }) => {
     reader.onloadend = () => {
       updateCardImage(card.id, reader.result);
     };
+    event.target.value = null;
   };
 
   const cardStyle = {
@@ -36,17 +37,19 @@ const DopamineCard = ({ card }) => {
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setActiveCard(card)}
     >
       <h3 className={styles.title}>{card.title}</h3>
-      <button
+      {/* The button is now a label linked to the input */}
+      <label
+        htmlFor={inputId}
         className={styles.editButton}
-        onClick={handleEditClick}
-        title="Edit image"
+        onClick={handleLabelClick}
+        aria-label={`Edit image for ${card.title}`}
       >
         ✏️
-      </button>
+      </label>
       <input
+        id={inputId}
         type="file"
         accept="image/*"
-        ref={fileInputRef}
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />

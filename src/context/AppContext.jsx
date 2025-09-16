@@ -77,6 +77,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const updateCardImage = (cardId, newImgSrc) => {
+    console.log('3. updateCardImage function called for card ID:', cardId);
     setCards(currentCards =>
       currentCards.map(card =>
         card.id === cardId ? { ...card, imgSrc: newImgSrc } : card
