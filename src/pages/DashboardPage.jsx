@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Timer from '../components/Timer';
+import NotePad from '../components/NotePad';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
@@ -16,7 +17,7 @@ const DashboardPage = () => {
           <Timer />
         </div>
         <div className={styles.rightColumn}>
-          <h2>Notes</h2>
+          <NotePad />
         </div>
       </main>
     </div>
