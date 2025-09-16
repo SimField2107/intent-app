@@ -18,6 +18,7 @@ export const AppProvider = ({ children }) => {
   });
   const [theme, setTheme] = useLocalStorage('appTheme', 'dark');
   const [activityToDelete, setActivityToDelete] = useState(null);
+  const [isActive, setIsActive] = useState(false);
 
   // Update document theme when theme state changes
   useEffect(() => {
@@ -67,6 +68,8 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleTimerComplete = () => {
+    setIsActive(false);
+    
     if (timerMode === 'pomodoro') {
       const newCount = sessionCount + 1;
       setSessionCount(newCount);
@@ -127,6 +130,8 @@ export const AppProvider = ({ children }) => {
     toggleTheme,
     activityToDelete,
     setActivityToDelete,
+    isActive,
+    setIsActive,
     handleSubmit,
     handleDeleteActivity,
     confirmDeleteActivity,

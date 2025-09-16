@@ -10,6 +10,8 @@ const Timer = () => {
     setSessionCount, 
     timerMode, 
     setTimerMode, 
+    isActive,
+    setIsActive,
     startTimer,
     handleTimerComplete,
     settings
@@ -21,7 +23,6 @@ const Timer = () => {
   const longBreakDuration = settings.longBreak * 60;
   
   const [timeLeft, setTimeLeft] = useState(() => settings.pomodoro * 60);
-  const [isActive, setIsActive] = useState(false);
   const audioRef = useRef(null);
 
   // Find the selected activity
