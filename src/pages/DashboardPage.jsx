@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import Timer from '../components/Timer';
 import NotePad from '../components/NotePad';
+import SettingsModal from '../components/SettingsModal';
+import AppContext from '../context/AppContext';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
+  const { isSettingsOpen } = useContext(AppContext);
+
   return (
     <div className={styles.container}>
       <Header />
@@ -20,6 +24,7 @@ const DashboardPage = () => {
           <NotePad />
         </div>
       </main>
+      {isSettingsOpen && <SettingsModal />}
     </div>
   );
 };

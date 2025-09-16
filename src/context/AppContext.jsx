@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   const [selectedActivityId, setSelectedActivityId] = useState(null);
   const [sessionCount, setSessionCount] = useState(0);
   const [timerMode, setTimerMode] = useState('pomodoro');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,6 +70,8 @@ export const AppProvider = ({ children }) => {
     setSessionCount,
     timerMode,
     setTimerMode,
+    isSettingsOpen,
+    setIsSettingsOpen,
     handleSubmit,
     handleDeleteActivity,
     handleToggleComplete,

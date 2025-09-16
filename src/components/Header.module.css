@@ -2,6 +2,9 @@
   background-color: var(--background-dark);
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--card-background-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
@@ -9,4 +12,22 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
+}
+
+.settingsButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--card-background-dark);
+  color: var(--text-dark);
+  border: 1px solid var(--card-background-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.settingsButton:hover {
+  background-color: var(--primary-accent);
+  color: white;
+  border-color: var(--primary-accent);
 }
