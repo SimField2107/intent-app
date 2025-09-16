@@ -6,6 +6,7 @@ import styles from './Menu.module.css';
 const Menu = () => {
   const [activities, setActivities] = useLocalStorage('activities', []);
   const [inputValue, setInputValue] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,16 +48,55 @@ const Menu = () => {
         </button>
       </form>
       
-      <ul className={styles.list}>
-        {activities.map((activity) => (
+      <div className={styles.filterButtons}>
+        <button 
+          className={`${styles.filterButton} ${filter === 'all' ? styles.activeFilter : ''}`}
+          onClick={() => setFilter('all')}
+        >
+          All
+        </button>
+        <button 
+          className={`${styles.filterButton} ${filter === 'active' ? styles.activeFilter : ''}`}
+          onClick={() => setFilter('active')}
+        >
+          Active
+        </button>
+        <button 
+          className={`${styles.filterButton} ${filter === 'completed' ? styles.activeFilter : ''}`}
+          onClick={() => setFilter('completed')}
+        >
+          Completed
+        </button>
+      </div>
+      
+      {(() => {
+        let filteredActivities;
+        switch (filter) {
+          case 'active':
+            filteredActivities = activities.filter(activity => !activity.completed);
+            break;
+          case 'completed':
+            filteredActivities = activities.filter(activity => activity.completed);
+            break;
+          case 'all':
+          default:
+            filteredActivities = activities;
+            break;
+        }
+        
+        return (
+          <ul className={styles.list}>
+            {filteredActivities.map((activity) => (
           <ActivityCard 
             key={activity.id} 
             activity={activity} 
             onDelete={handleDeleteActivity}
             onToggleComplete={handleToggleComplete}
           />
-        ))}
-      </ul>
+            ))}
+          </ul>
+        );
+      })()}
     </div>
   );
 };

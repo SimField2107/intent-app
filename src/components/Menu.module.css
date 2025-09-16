@@ -41,6 +41,40 @@
   background-color: #0099e6;
 }
 
+.filterButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filterButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-background-dark);
+  border-radius: 4px;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  border-color: var(--primary-accent);
+  background-color: var(--card-background-dark);
+}
+
+.filterButton.activeFilter {
+  background-color: var(--primary-accent);
+  color: white;
+  border-color: var(--primary-accent);
+}
+
+.filterButton.activeFilter:hover {
+  background-color: #0099e6;
+}
+
 .list {
   list-style: none;
   padding: 0;
