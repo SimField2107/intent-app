@@ -50,19 +50,19 @@ const Menu = () => {
       
       <div className={styles.filterButtons}>
         <button 
-          className={`${styles.filterButton} ${filter === 'all' ? styles.activeFilter : ''}`}
+          className={`${styles.filterButton} ${filter === 'all' ? styles.activeButton : ''}`}
           onClick={() => setFilter('all')}
         >
           All
         </button>
         <button 
-          className={`${styles.filterButton} ${filter === 'active' ? styles.activeFilter : ''}`}
+          className={`${styles.filterButton} ${filter === 'active' ? styles.activeButton : ''}`}
           onClick={() => setFilter('active')}
         >
           Active
         </button>
         <button 
-          className={`${styles.filterButton} ${filter === 'completed' ? styles.activeFilter : ''}`}
+          className={`${styles.filterButton} ${filter === 'completed' ? styles.activeButton : ''}`}
           onClick={() => setFilter('completed')}
         >
           Completed

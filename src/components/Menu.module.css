@@ -65,14 +65,28 @@
   background-color: var(--card-background-dark);
 }
 
-.filterButton.activeFilter {
+.filterButton.activeButton {
   background-color: var(--primary-accent);
   color: white;
   border-color: var(--primary-accent);
+  box-shadow: 0 2px 4px rgba(0, 168, 255, 0.3);
+  position: relative;
 }
 
-.filterButton.activeFilter:hover {
+.filterButton.activeButton::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.filterButton.activeButton:hover {
   background-color: #0099e6;
+  box-shadow: 0 2px 6px rgba(0, 168, 255, 0.4);
 }
 
 .list {
