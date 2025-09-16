@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import Header from '../components/Header';
 import DopamineBoard from '../components/DopamineBoard';
+import ActivityView from '../components/ActivityView';
 import SettingsModal from '../components/SettingsModal';
 import AppContext from '../context/AppContext';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
-  const { isSettingsOpen, activityToDelete, setActivityToDelete, confirmDeleteActivity } = useContext(AppContext);
+  const { isSettingsOpen, activityToDelete, setActivityToDelete, confirmDeleteActivity, activeCard } = useContext(AppContext);
 
   return (
     <div className={styles.dashboard}>
       <Header />
       <main className={styles.mainContent}>
-        <DopamineBoard />
+        {activeCard ? <ActivityView /> : <DopamineBoard />}
       </main>
       {isSettingsOpen && <SettingsModal />}
       {activityToDelete && (

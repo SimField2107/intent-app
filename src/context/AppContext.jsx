@@ -19,6 +19,17 @@ export const AppProvider = ({ children }) => {
   const [theme, setTheme] = useLocalStorage('appTheme', 'dark');
   const [activityToDelete, setActivityToDelete] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+
+  // Card data for the Dopamine Board
+  const cardData = [
+    { id: 1, title: 'For when you feel stressed' },
+    { id: 2, title: 'For when you feel anxious' },
+    { id: 3, title: 'After a bad day at work' },
+    { id: 4, title: 'A burst of physical energy' },
+    { id: 5, title: 'A moment of creativity' },
+    { id: 6, title: 'To connect with others' },
+  ];
 
   // Update document theme when theme state changes
   useEffect(() => {
@@ -132,6 +143,9 @@ export const AppProvider = ({ children }) => {
     setActivityToDelete,
     isActive,
     setIsActive,
+    cardData,
+    activeCard,
+    setActiveCard,
     handleSubmit,
     handleDeleteActivity,
     confirmDeleteActivity,
