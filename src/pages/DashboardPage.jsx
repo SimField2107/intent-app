@@ -8,7 +8,7 @@ import AppContext from '../context/AppContext';
 import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
-  const { isSettingsOpen } = useContext(AppContext);
+  const { isSettingsOpen, activityToDelete, setActivityToDelete, confirmDeleteActivity } = useContext(AppContext);
 
   return (
     <div className={styles.container}>
@@ -25,6 +25,28 @@ const DashboardPage = () => {
         </div>
       </main>
       {isSettingsOpen && <SettingsModal />}
+      {activityToDelete && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h3>Confirm Delete</h3>
+            <p>Are you sure you want to delete this activity?</p>
+            <div className={styles.modalButtons}>
+              <button 
+                className={styles.cancelButton}
+                onClick={() => setActivityToDelete(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                className={styles.confirmButton}
+                onClick={confirmDeleteActivity}
+              >
+                Confirm Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

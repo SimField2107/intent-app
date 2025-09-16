@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
+import AppContext from '../context/AppContext';
 import styles from './ActivityCard.module.css';
 
-const ActivityCard = ({ activity, onDelete, onToggleComplete, onSelectActivity, selectedActivityId }) => {
+const ActivityCard = ({ activity, onToggleComplete, onSelectActivity, selectedActivityId }) => {
+  const { setActivityToDelete } = useContext(AppContext);
   const isSelected = selectedActivityId === activity.id;
   
   return (
@@ -31,7 +33,7 @@ const ActivityCard = ({ activity, onDelete, onToggleComplete, onSelectActivity, 
         </button>
         <button 
           className={styles.deleteButton}
-          onClick={() => onDelete(activity.id)}
+          onClick={() => setActivityToDelete(activity.id)}
         >
           Delete
         </button>

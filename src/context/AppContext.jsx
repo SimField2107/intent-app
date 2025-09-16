@@ -17,6 +17,7 @@ export const AppProvider = ({ children }) => {
     longBreak: 15 
   });
   const [theme, setTheme] = useLocalStorage('appTheme', 'dark');
+  const [activityToDelete, setActivityToDelete] = useState(null);
 
   // Update document theme when theme state changes
   useEffect(() => {
@@ -41,7 +42,12 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleDeleteActivity = (id) => {
-    setActivities(activities.filter(activity => activity.id !== id));
+    setActivityToDelete(id);
+  };
+
+  const confirmDeleteActivity = () => {
+    setActivities(activities.filter(activity => activity.id !== activityToDelete));
+    setActivityToDelete(null);
   };
 
   const handleToggleComplete = (id) => {
@@ -119,8 +125,11 @@ export const AppProvider = ({ children }) => {
     setSettings,
     theme,
     toggleTheme,
+    activityToDelete,
+    setActivityToDelete,
     handleSubmit,
     handleDeleteActivity,
+    confirmDeleteActivity,
     handleToggleComplete,
     handleSelectActivity,
     startTimer,

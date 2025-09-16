@@ -12,7 +12,6 @@ const Menu = () => {
     filter,
     setFilter,
     handleSubmit,
-    handleDeleteActivity,
     handleToggleComplete,
     handleSelectActivity,
     selectedActivityId
@@ -81,7 +80,6 @@ const Menu = () => {
               <ActivityCard 
                 key={activity.id} 
                 activity={activity} 
-                onDelete={handleDeleteActivity}
                 onToggleComplete={handleToggleComplete}
                 onSelectActivity={handleSelectActivity}
                 selectedActivityId={selectedActivityId}
