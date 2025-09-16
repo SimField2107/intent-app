@@ -22,6 +22,10 @@ const Menu = () => {
     }
   };
 
+  const handleDeleteActivity = (id) => {
+    setActivities(activities.filter(activity => activity.id !== id));
+  };
+
   return (
     <div className={styles.menu}>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -39,7 +43,11 @@ const Menu = () => {
       
       <ul className={styles.list}>
         {activities.map((activity) => (
-          <ActivityCard key={activity.id} activity={activity} />
+          <ActivityCard 
+            key={activity.id} 
+            activity={activity} 
+            onDelete={handleDeleteActivity}
+          />
         ))}
       </ul>
     </div>
