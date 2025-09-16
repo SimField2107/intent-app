@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Timer.module.css';
 
 // Timer mode durations in seconds
@@ -10,6 +10,7 @@ const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(POMODORO);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState('pomodoro');
+  const audioRef = useRef(null);
 
   // Reset timer when mode changes
   useEffect(() => {
@@ -39,6 +40,7 @@ const Timer = () => {
       }, 1000);
     } else if (timeLeft === 0) {
       setIsActive(false);
+      audioRef.current.play();
     }
     
     return () => {
@@ -96,6 +98,7 @@ const Timer = () => {
 
   return (
     <div className={styles.timer}>
+      <audio ref={audioRef} src="/assets/notification.mp3" />
       <div className={styles.modeButtons}>
         <button 
           className={`${styles.modeButton} ${mode === 'pomodoro' ? styles.activeMode : ''}`}
