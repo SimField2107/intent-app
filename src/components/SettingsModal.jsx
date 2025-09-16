@@ -4,15 +4,15 @@ import styles from './SettingsModal.module.css';
 
 const SettingsModal = () => {
   const { isSettingsOpen, setIsSettingsOpen, settings, setSettings } = useContext(AppContext);
-  const [pomodoroDuration, setPomodoroDuration] = useState(settings.pomodoro);
-  const [shortBreakDuration, setShortBreakDuration] = useState(settings.shortBreak);
-  const [longBreakDuration, setLongBreakDuration] = useState(settings.longBreak);
+  const [pomodoroDuration, setPomodoroDuration] = useState(settings.pomodoro.toString());
+  const [shortBreakDuration, setShortBreakDuration] = useState(settings.shortBreak.toString());
+  const [longBreakDuration, setLongBreakDuration] = useState(settings.longBreak.toString());
 
   // Update local state when settings change
   useEffect(() => {
-    setPomodoroDuration(settings.pomodoro);
-    setShortBreakDuration(settings.shortBreak);
-    setLongBreakDuration(settings.longBreak);
+    setPomodoroDuration(settings.pomodoro.toString());
+    setShortBreakDuration(settings.shortBreak.toString());
+    setLongBreakDuration(settings.longBreak.toString());
   }, [settings]);
 
   const handleClose = () => {
@@ -22,9 +22,9 @@ const SettingsModal = () => {
   const handleSave = (e) => {
     e.preventDefault();
     setSettings({
-      pomodoro: pomodoroDuration,
-      shortBreak: shortBreakDuration,
-      longBreak: longBreakDuration
+      pomodoro: parseInt(pomodoroDuration) || 25,
+      shortBreak: parseInt(shortBreakDuration) || 5,
+      longBreak: parseInt(longBreakDuration) || 15
     });
     setIsSettingsOpen(false);
   };
@@ -51,7 +51,7 @@ const SettingsModal = () => {
               id="pomodoro"
               className={styles.input}
               value={pomodoroDuration}
-              onChange={(e) => setPomodoroDuration(parseInt(e.target.value) || 25)}
+              onChange={(e) => setPomodoroDuration(e.target.value)}
               min="1"
               max="60"
             />
@@ -66,7 +66,7 @@ const SettingsModal = () => {
               id="shortBreak"
               className={styles.input}
               value={shortBreakDuration}
-              onChange={(e) => setShortBreakDuration(parseInt(e.target.value) || 5)}
+              onChange={(e) => setShortBreakDuration(e.target.value)}
               min="1"
               max="30"
             />
@@ -81,7 +81,7 @@ const SettingsModal = () => {
               id="longBreak"
               className={styles.input}
               value={longBreakDuration}
-              onChange={(e) => setLongBreakDuration(parseInt(e.target.value) || 15)}
+              onChange={(e) => setLongBreakDuration(e.target.value)}
               min="1"
               max="60"
             />
