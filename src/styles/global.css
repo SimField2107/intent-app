@@ -1,10 +1,9 @@
 :root {
-  --background-light: #F8F5F2;
-  --background-dark: #1A1D22;
-  --text-light: #333333;
-  --text-dark: #E0E0E0;
+  /* Light theme (default) */
+  --background: #F8F5F2;
+  --text: #333333;
+  --card-background: #FFFFFF;
   --primary-accent: #00A8FF; /* Vibrant Blue for now */
-  --card-background-dark: #2A2F37;
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -14,14 +13,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+[data-theme='dark'] {
+  /* Dark theme */
+  --background: #1A1D22;
+  --text: #E0E0E0;
+  --card-background: #2A2F37;
+}
+
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--background-dark);
-  color: var(--text-dark);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 h1, h2, h3, h4, h5, h6 {

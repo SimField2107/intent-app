@@ -1,24 +1,48 @@
 .header {
-  background-color: var(--background-dark);
+  background-color: var(--background);
   padding: 1rem 2rem;
-  border-bottom: 1px solid var(--card-background-dark);
+  border-bottom: 1px solid var(--card-background);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .title {
-  color: var(--text-dark);
+  color: var(--text);
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.themeButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--card-background);
+  color: var(--text);
+  border: 1px solid var(--card-background);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.themeButton:hover {
+  background-color: var(--primary-accent);
+  color: white;
+  border-color: var(--primary-accent);
+}
+
 .settingsButton {
   padding: 0.5rem 1rem;
-  background-color: var(--card-background-dark);
-  color: var(--text-dark);
-  border: 1px solid var(--card-background-dark);
+  background-color: var(--card-background);
+  color: var(--text);
+  border: 1px solid var(--card-background);
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;

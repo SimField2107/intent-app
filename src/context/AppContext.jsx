@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const AppContext = createContext();
@@ -16,6 +16,16 @@ export const AppProvider = ({ children }) => {
     shortBreak: 5, 
     longBreak: 15 
   });
+  const [theme, setTheme] = useLocalStorage('appTheme', 'dark');
+
+  // Update document theme when theme state changes
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,6 +117,8 @@ export const AppProvider = ({ children }) => {
     setIsSettingsOpen,
     settings,
     setSettings,
+    theme,
+    toggleTheme,
     handleSubmit,
     handleDeleteActivity,
     handleToggleComplete,
