@@ -27,6 +27,10 @@ const DopamineCard = ({ card }) => {
     backgroundImage: card.imgSrc ? `url(${card.imgSrc})` : 'none',
   };
 
+  const handleImageError = () => {
+    console.log(`Failed to load image for card: ${card.title}`, card.imgSrc);
+  };
+
   return (
     <div
       className={`${styles.card} ${card.imgSrc ? styles.hasImage : ''}`}
@@ -53,6 +57,16 @@ const DopamineCard = ({ card }) => {
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
+      {/* Hidden img element to test image loading */}
+      {card.imgSrc && (
+        <img
+          src={card.imgSrc}
+          alt=""
+          style={{ display: 'none' }}
+          onError={handleImageError}
+          onLoad={() => console.log(`Successfully loaded image for: ${card.title}`)}
+        />
+      )}
     </div>
   );
 };

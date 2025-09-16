@@ -4,7 +4,11 @@ import useLocalStorage from '../hooks/useLocalStorage';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [activities, setActivities] = useLocalStorage('activities', []);
+  const [activities, setActivities] = useLocalStorage('activities', [
+    { id: 1, text: 'Go for a 10-minute walk', completed: true },
+    { id: 2, text: 'Read one chapter of a book', completed: false },
+    { id: 3, text: "Plan tomorrow's top 3 priorities", completed: false },
+  ]);
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
   const [selectedActivityId, setSelectedActivityId] = useState(null);
@@ -23,12 +27,12 @@ export const AppProvider = ({ children }) => {
 
   // Initial card data for the Dopamine Board
   const initialCards = [
-    { id: 1, title: 'For when you feel stressed', imgSrc: null },
-    { id: 2, title: 'For when you feel anxious', imgSrc: null },
-    { id: 3, title: 'After a bad day at work', imgSrc: null },
-    { id: 4, title: 'A burst of physical energy', imgSrc: null },
-    { id: 5, title: 'A moment of creativity', imgSrc: null },
-    { id: 6, title: 'To connect with others', imgSrc: null },
+    { id: 1, title: 'For when you feel stressed', imgSrc: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1080&h=1080&fit=crop&crop=center' },
+    { id: 2, title: 'For when you feel anxious', imgSrc: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1080&h=1080&fit=crop&crop=center' },
+    { id: 3, title: 'After a bad day at work', imgSrc: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1080&h=1080&fit=crop&crop=center' },
+    { id: 4, title: 'A burst of physical energy', imgSrc: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1080&h=1080&fit=crop&crop=center' },
+    { id: 5, title: 'A moment of creativity', imgSrc: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1080&h=1080&fit=crop&crop=center' },
+    { id: 6, title: 'To connect with others', imgSrc: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1080&h=1080&fit=crop&crop=center' },
   ];
 
   const [cards, setCards] = useLocalStorage('dopamineCards', initialCards);
