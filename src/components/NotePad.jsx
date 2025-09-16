@@ -1,13 +1,18 @@
 import React from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './NotePad.module.css';
 
 const NotePad = () => {
+  const [note, setNote] = useLocalStorage('notepadContent', '');
+
   return (
     <div className={styles.notepad}>
       <h2 className={styles.title}>Scratchpad</h2>
       <textarea 
         className={styles.textarea}
         placeholder="Jot down your thoughts..."
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
       />
     </div>
   );
