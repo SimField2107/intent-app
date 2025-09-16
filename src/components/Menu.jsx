@@ -51,36 +51,42 @@ const Menu = ({
         </button>
       </div>
       
-      {(() => {
-        let filteredActivities;
-        switch (filter) {
-          case 'active':
-            filteredActivities = activities.filter(activity => !activity.completed);
-            break;
-          case 'completed':
-            filteredActivities = activities.filter(activity => activity.completed);
-            break;
-          case 'all':
-          default:
-            filteredActivities = activities;
-            break;
-        }
-        
-        return (
-          <ul className={styles.list}>
-            {filteredActivities.map((activity) => (
-          <ActivityCard 
-            key={activity.id} 
-            activity={activity} 
-            onDelete={onDeleteActivity}
-            onToggleComplete={onToggleComplete}
-            onSelectActivity={onSelectActivity}
-            selectedActivityId={selectedActivityId}
-          />
-            ))}
-          </ul>
-        );
-      })()}
+      {activities.length === 0 ? (
+        <div className={styles.emptyState}>
+          <p className={styles.emptyMessage}>Ready to focus? Add your first activity to get started!</p>
+        </div>
+      ) : (
+        (() => {
+          let filteredActivities;
+          switch (filter) {
+            case 'active':
+              filteredActivities = activities.filter(activity => !activity.completed);
+              break;
+            case 'completed':
+              filteredActivities = activities.filter(activity => activity.completed);
+              break;
+            case 'all':
+            default:
+              filteredActivities = activities;
+              break;
+          }
+          
+          return (
+            <ul className={styles.list}>
+              {filteredActivities.map((activity) => (
+            <ActivityCard 
+              key={activity.id} 
+              activity={activity} 
+              onDelete={onDeleteActivity}
+              onToggleComplete={onToggleComplete}
+              onSelectActivity={onSelectActivity}
+              selectedActivityId={selectedActivityId}
+            />
+              ))}
+            </ul>
+          );
+        })()
+      )}
     </div>
   );
 };
