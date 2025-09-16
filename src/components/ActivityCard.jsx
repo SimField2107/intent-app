@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './ActivityCard.module.css';
 
-const ActivityCard = ({ activity, onDelete, onToggleComplete }) => {
+const ActivityCard = ({ activity, onDelete, onToggleComplete, onSelectActivity, selectedActivityId }) => {
+  const isSelected = selectedActivityId === activity.id;
+  
   return (
-    <li className={`${styles.listItem} ${activity.completed ? styles.completed : ''}`}>
+    <li className={`${styles.listItem} ${activity.completed ? styles.completed : ''} ${isSelected ? styles.active : ''}`}>
       <div className={styles.activityContent}>
         <input
           type="checkbox"
@@ -13,12 +15,20 @@ const ActivityCard = ({ activity, onDelete, onToggleComplete }) => {
         />
         <span className={styles.activityText}>{activity.text}</span>
       </div>
-      <button 
-        className={styles.deleteButton}
-        onClick={() => onDelete(activity.id)}
-      >
-        Delete
-      </button>
+      <div className={styles.buttonGroup}>
+        <button 
+          className={styles.focusButton}
+          onClick={() => onSelectActivity(activity.id)}
+        >
+          Focus
+        </button>
+        <button 
+          className={styles.deleteButton}
+          onClick={() => onDelete(activity.id)}
+        >
+          Delete
+        </button>
+      </div>
     </li>
   );
 };

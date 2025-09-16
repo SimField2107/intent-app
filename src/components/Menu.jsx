@@ -1,41 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ActivityCard from './ActivityCard';
-import useLocalStorage from '../hooks/useLocalStorage';
 import styles from './Menu.module.css';
 
-const Menu = () => {
-  const [activities, setActivities] = useLocalStorage('activities', []);
-  const [inputValue, setInputValue] = useState('');
-  const [filter, setFilter] = useState('all');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue.trim() !== '') {
-      const newActivity = {
-        id: Date.now(), // Simple unique ID generation
-        text: inputValue.trim(),
-        completed: false
-      };
-      setActivities([...activities, newActivity]);
-      setInputValue('');
-    }
-  };
-
-  const handleDeleteActivity = (id) => {
-    setActivities(activities.filter(activity => activity.id !== id));
-  };
-
-  const handleToggleComplete = (id) => {
-    setActivities(activities.map(activity => 
-      activity.id === id 
-        ? { ...activity, completed: !activity.completed }
-        : activity
-    ));
-  };
+const Menu = ({ 
+  activities, 
+  inputValue, 
+  setInputValue, 
+  filter, 
+  setFilter, 
+  onAddActivity, 
+  onDeleteActivity, 
+  onToggleComplete, 
+  onSelectActivity, 
+  selectedActivityId 
+}) => {
 
   return (
     <div className={styles.menu}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={onAddActivity}>
         <input 
           type="text" 
           placeholder="Add a new activity..." 
@@ -90,8 +72,10 @@ const Menu = () => {
           <ActivityCard 
             key={activity.id} 
             activity={activity} 
-            onDelete={handleDeleteActivity}
-            onToggleComplete={handleToggleComplete}
+            onDelete={onDeleteActivity}
+            onToggleComplete={onToggleComplete}
+            onSelectActivity={onSelectActivity}
+            selectedActivityId={selectedActivityId}
           />
             ))}
           </ul>

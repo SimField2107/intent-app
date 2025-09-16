@@ -6,11 +6,14 @@ const POMODORO = 1500; // 25 minutes
 const SHORT_BREAK = 300; // 5 minutes
 const LONG_BREAK = 900; // 15 minutes
 
-const Timer = () => {
+const Timer = ({ activities, selectedActivityId }) => {
   const [timeLeft, setTimeLeft] = useState(POMODORO);
   const [isActive, setIsActive] = useState(false);
   const [mode, setMode] = useState('pomodoro');
   const audioRef = useRef(null);
+
+  // Find the selected activity
+  const selectedActivity = activities.find(activity => activity.id === selectedActivityId);
 
   // Reset timer when mode changes
   useEffect(() => {
@@ -49,6 +52,24 @@ const Timer = () => {
       }
     };
   }, [isActive, timeLeft]);
+
+  // Update document title when timer is active
+  useEffect(() => {
+    if (isActive && timeLeft > 0) {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      const activityText = selectedActivity ? ` | ${selectedActivity.text}` : ' | Time to focus!';
+      document.title = `${timeString}${activityText}`;
+    } else {
+      document.title = 'Intent App';
+    }
+
+    // Cleanup function to reset title
+    return () => {
+      document.title = 'Intent App';
+    };
+  }, [isActive, timeLeft, selectedActivity]);
 
   // Format time into MM:SS
   const formatTime = (seconds) => {
@@ -99,6 +120,12 @@ const Timer = () => {
   return (
     <div className={styles.timer}>
       <audio ref={audioRef} src="/assets/notification.mp3" />
+      {selectedActivity && (
+        <div className={styles.selectedActivity}>
+          <h3 className={styles.activityTitle}>Focusing on:</h3>
+          <p className={styles.activityText}>{selectedActivity.text}</p>
+        </div>
+      )}
       <div className={styles.modeButtons}>
         <button 
           className={`${styles.modeButton} ${mode === 'pomodoro' ? styles.activeMode : ''}`}
