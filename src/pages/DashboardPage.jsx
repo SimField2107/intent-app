@@ -1,10 +1,7 @@
 import React, { useContext } from 'react';
 import Header from '../components/Header';
-import Menu from '../components/Menu';
-import Timer from '../components/Timer';
-import NotePad from '../components/NotePad';
+import DopamineBoard from '../components/DopamineBoard';
 import SettingsModal from '../components/SettingsModal';
-import Card from '../components/Card';
 import AppContext from '../context/AppContext';
 import styles from './DashboardPage.module.css';
 
@@ -15,15 +12,7 @@ const DashboardPage = () => {
     <div className={styles.dashboard}>
       <Header />
       <main className={styles.mainContent}>
-        <Card title="Activity Menu">
-          <Menu />
-        </Card>
-        <Card title="Focus Timer">
-          <Timer />
-        </Card>
-        <Card title="Scratchpad">
-          <NotePad />
-        </Card>
+        <DopamineBoard />
       </main>
       {isSettingsOpen && <SettingsModal />}
       {activityToDelete && (

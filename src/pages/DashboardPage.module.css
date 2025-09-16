@@ -6,10 +6,10 @@
 }
 
 .mainContent {
-  display: grid;
-  grid-template-columns: 40% 25% 35%;
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* Confirmation Modal Styles */
