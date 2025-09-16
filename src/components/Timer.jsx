@@ -10,6 +10,7 @@ const Timer = () => {
     setSessionCount, 
     timerMode, 
     setTimerMode, 
+    startTimer,
     handleTimerComplete,
     settings
   } = useContext(AppContext);
@@ -90,8 +91,14 @@ const Timer = () => {
   };
 
   // Button handlers
-  const handleStart = () => {
-    setIsActive(true);
+  const handleStartClick = async () => {
+    // Request notification permission if not already granted
+    if (Notification.permission === 'default') {
+      await Notification.requestPermission();
+    }
+    
+    // Start the timer
+    startTimer();
   };
 
   const handlePause = () => {
@@ -151,7 +158,7 @@ const Timer = () => {
       <div className={styles.controls}>
         <button 
           className={`${styles.button} ${styles.startButton}`}
-          onClick={handleStart}
+          onClick={handleStartClick}
           disabled={isActive}
         >
           Start

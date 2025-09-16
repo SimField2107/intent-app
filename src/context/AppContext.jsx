@@ -46,6 +46,10 @@ export const AppProvider = ({ children }) => {
     setSelectedActivityId(id);
   };
 
+  const startTimer = () => {
+    setIsActive(true);
+  };
+
   const handleTimerComplete = () => {
     if (timerMode === 'pomodoro') {
       const newCount = sessionCount + 1;
@@ -59,6 +63,30 @@ export const AppProvider = ({ children }) => {
       }
     } else if (timerMode === 'shortBreak' || timerMode === 'longBreak') {
       setTimerMode('pomodoro');
+    }
+
+    // Send browser notification
+    if (Notification.permission === 'granted') {
+      let title, body;
+      
+      if (timerMode === 'pomodoro') {
+        const newCount = sessionCount + 1;
+        if (newCount % 4 === 0) {
+          title = 'Pomodoro Complete!';
+          body = 'Great work! Time for a long break.';
+        } else {
+          title = 'Pomodoro Complete!';
+          body = 'Time for a short break.';
+        }
+      } else if (timerMode === 'shortBreak') {
+        title = 'Break Complete!';
+        body = 'Ready to focus? Start your next Pomodoro session.';
+      } else if (timerMode === 'longBreak') {
+        title = 'Long Break Complete!';
+        body = 'Refreshed and ready! Time to start a new Pomodoro cycle.';
+      }
+      
+      new Notification(title, { body });
     }
   };
 
@@ -83,6 +111,7 @@ export const AppProvider = ({ children }) => {
     handleDeleteActivity,
     handleToggleComplete,
     handleSelectActivity,
+    startTimer,
     handleTimerComplete
   };
 
