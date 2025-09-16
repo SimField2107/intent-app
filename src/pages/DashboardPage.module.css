@@ -3,3 +3,31 @@
   background-color: var(--background-dark);
   color: var(--text-dark);
 }
+
+.main {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.leftColumn {
+  flex: 0 0 40%;
+  padding: 1rem;
+  background-color: var(--card-background-dark);
+  border-radius: 8px;
+}
+
+.centerColumn {
+  flex: 0 0 25%;
+  padding: 1rem;
+  background-color: var(--card-background-dark);
+  border-radius: 8px;
+}
+
+.rightColumn {
+  flex: 1;
+  padding: 1rem;
+  background-color: var(--card-background-dark);
+  border-radius: 8px;
+}
