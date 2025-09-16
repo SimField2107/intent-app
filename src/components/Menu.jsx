@@ -4,9 +4,9 @@ import styles from './Menu.module.css';
 
 const Menu = () => {
   const [activities, setActivities] = useState([
-    { id: 1, text: '10-Minute Walk' },
-    { id: 2, text: 'Deep Work on Project X' },
-    { id: 3, text: 'Read for 30 minutes' }
+    { id: 1, text: '10-Minute Walk', completed: false },
+    { id: 2, text: 'Deep Work on Project X', completed: false },
+    { id: 3, text: 'Read for 30 minutes', completed: false }
   ]);
   const [inputValue, setInputValue] = useState('');
 
@@ -15,7 +15,8 @@ const Menu = () => {
     if (inputValue.trim() !== '') {
       const newActivity = {
         id: Date.now(), // Simple unique ID generation
-        text: inputValue.trim()
+        text: inputValue.trim(),
+        completed: false
       };
       setActivities([...activities, newActivity]);
       setInputValue('');
@@ -24,6 +25,14 @@ const Menu = () => {
 
   const handleDeleteActivity = (id) => {
     setActivities(activities.filter(activity => activity.id !== id));
+  };
+
+  const handleToggleComplete = (id) => {
+    setActivities(activities.map(activity => 
+      activity.id === id 
+        ? { ...activity, completed: !activity.completed }
+        : activity
+    ));
   };
 
   return (
@@ -47,6 +56,7 @@ const Menu = () => {
             key={activity.id} 
             activity={activity} 
             onDelete={handleDeleteActivity}
+            onToggleComplete={handleToggleComplete}
           />
         ))}
       </ul>

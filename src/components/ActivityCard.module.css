@@ -15,6 +15,25 @@
   border-color: var(--primary-accent);
 }
 
+.listItem.completed {
+  opacity: 0.6;
+}
+
+.listItem.completed .activityText {
+  text-decoration: line-through;
+}
+
+.activityContent {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
 .activityText {
   flex: 1;
 }
