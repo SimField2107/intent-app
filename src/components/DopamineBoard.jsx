@@ -4,11 +4,11 @@ import AppContext from '../context/AppContext';
 import styles from './DopamineBoard.module.css';
 
 const DopamineBoard = () => {
-  const { cardData } = useContext(AppContext);
+  const { cards } = useContext(AppContext);
 
   return (
     <div className={styles.board}>
-      {cardData.map((card) => (
+      {cards.map((card) => (
         <DopamineCard key={card.id} card={card} />
       ))}
     </div>
