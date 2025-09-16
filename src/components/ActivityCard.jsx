@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './ActivityCard.module.css';
 
-const ActivityCard = () => {
+const ActivityCard = ({ activity }) => {
   return (
-    <div>
-      <h3>Activity Card Component</h3>
-    </div>
+    <li className={styles.listItem}>
+      {activity.text}
+    </li>
   );
 };
 

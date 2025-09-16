@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ActivityCard from './ActivityCard';
 import styles from './Menu.module.css';
 
 const Menu = () => {
@@ -38,9 +39,7 @@ const Menu = () => {
       
       <ul className={styles.list}>
         {activities.map((activity) => (
-          <li key={activity.id} className={styles.listItem}>
-            {activity.text}
-          </li>
+          <ActivityCard key={activity.id} activity={activity} />
         ))}
       </ul>
     </div>
